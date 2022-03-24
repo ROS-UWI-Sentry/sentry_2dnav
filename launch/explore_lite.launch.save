@@ -1,0 +1,7 @@
+<launch>
+<include file="$(find explore_lite)/launch/explore.launch" />
+<param name="/explore/costmap_topic" value="/rtabmap/grid_map" />
+
+<param name="min_frontier_size" value="1" type="double" />
+
+</launch>

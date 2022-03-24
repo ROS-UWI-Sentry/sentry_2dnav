@@ -1,0 +1,15 @@
+<launch>
+
+  <include file="$(find zed_wrapper)/launch/zed2.launch" >         
+       
+
+    <arg name="cam_pos_x"             value="0.53" />
+    <arg name="cam_pos_y"             value="0.0" /> 
+    <arg name="cam_pos_z"             value="0.35" /> 
+
+  
+
+  </include>
+
+  
+</launch> 

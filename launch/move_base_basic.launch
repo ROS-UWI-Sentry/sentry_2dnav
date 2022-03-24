@@ -5,9 +5,12 @@
  <!--   <node name="map_server" pkg="map_server" type="map_server" args="$(find sentry_map_provider)/willow-2010-02-18-0.10.pgm 0.100000"/> -->
 
  <!--- Run AMCL --> 
-<!--   <include file="$(find amcl)/examples/amcl_diff.launch" />   -->
+   <include file="$(find amcl)/examples/amcl_diff.launch" />
 
-   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+   <param name="amcl/transform_tolerance" type="double" value="0.6" />
+   <param name="amcl/odom_frame_id" type="string" value="/odom_combined " />
+
+    <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find sentry_2dnav)/costmap_common_params.yaml" command="load" ns="global_costmap" /> 
     <rosparam file="$(find sentry_2dnav)/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find sentry_2dnav)/local_costmap_params.yaml" command="load" />
@@ -21,7 +24,7 @@
 
 <!--  <remap from="/map" to="/rtabmap/grid_map"/>  -->
    
-    <remap from="/odom" to="/zed2/zed_node/odom"/>     
+    <remap from="/odom" to="/robot_pose_ekf/odom_combined"/>     
 
     <param name="recovery_behaviour_enabled" value="true" type="bool"/>
     <param name="rotate_recovery/frequency" value="5" type="double"/>
